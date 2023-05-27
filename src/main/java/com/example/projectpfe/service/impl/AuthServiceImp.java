@@ -11,6 +11,7 @@ import com.example.projectpfe.pojo.req.AuthReq;
 import com.example.projectpfe.repository.AuthRepository;
 import com.example.projectpfe.repository.UserRepository;
 import com.example.projectpfe.security.JwtTokenUtil;
+import com.example.projectpfe.security.SecurityConstants;
 import com.example.projectpfe.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class AuthServiceImp implements AuthService {
             try {
                 System.out.println(user.getIgg());
                 dataToken.setToken(jwtTokenUtil.generateToken(user.getIgg()));
+                dataToken.setAuthId(user.getIgg());
             } catch (JsonProcessingException e){
                 e.printStackTrace();
             }

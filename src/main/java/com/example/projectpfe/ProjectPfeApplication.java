@@ -46,7 +46,7 @@ public class ProjectPfeApplication {
 	@Bean
 	CommandLineRunner start() {
 		return args -> {
-
+/*
 			UserRoleReq roleOffer = new UserRoleReq();
 			roleOffer.setRole(RoleEnum.OFFER);
 			UserRole roleOffre1=  userRoleService.createUserRole(roleOffer);
@@ -126,7 +126,7 @@ public class ProjectPfeApplication {
 			user4.setCountry("Maroc");
 			user4.setCity("errachia");
 			userService.createUser(user4);
-/*
+
 			UserReq user5 = new UserReq();
 			user5.setFirstName("eltachari");
 			user5.setLastName("halima");

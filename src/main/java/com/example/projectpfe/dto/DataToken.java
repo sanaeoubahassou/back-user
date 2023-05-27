@@ -7,6 +7,7 @@ import lombok.Data;
 public class DataToken {
     @JsonProperty("token")
     private String token;
+    private String authId;
     public String getToken() {
         return token;
     }

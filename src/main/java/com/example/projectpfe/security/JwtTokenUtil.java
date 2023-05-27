@@ -1,5 +1,7 @@
 package com.example.projectpfe.security;
 
+import com.example.projectpfe.pojo.model.User;
+import com.example.projectpfe.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;//io.jsonwebtoken
@@ -20,6 +22,8 @@ public class JwtTokenUtil implements Serializable {
     private static final long serialVersionUID = -2550185165626007488L;
     @Autowired
     private ObjectMapper mapper;
+    @Autowired
+    private UserRepository userRepository;
     //@Value("${security.jwt.secret}")
     //private String secret;
 
@@ -55,7 +59,10 @@ public class JwtTokenUtil implements Serializable {
     //generate token for user
     public String generateToken(String autId) throws JsonProcessingException {
         Map<String, Object> claims = new HashMap<>();
+        User user = userRepository.getUserByIgg(autId);
         claims.put("authId", autId);
+        claims.put("fname", user.getFirstName());
+        claims.put("lname", user.getLastName());
         return doGenerateToken(autId, claims);
     }
 
